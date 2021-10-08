@@ -34,18 +34,6 @@ BIRD_IMAGE = pygame.transform.scale(
 
 BACKGROUND = pygame.image.load("E:/PROJECTS/PYTHON PROJECTS/GAMES/FLAPPY BIRD GAME/background.jpg")
 
-"""
-UPPER_PIPE_HEIGHT = random.randrange(150, 450)
-UPPER_PIPE = pygame.Rect(WIDTH + WIDTH, 0, 40, UPPER_PIPE_HEIGHT)
-
-GAP = 100
-GAP_HEIGHT = UPPER_PIPE_HEIGHT
-GAP_END = UPPER_PIPE_HEIGHT + GAP
-
-LOWER_PIPE_HEIGHT = 642 - GAP_END
-LOWER_PIPE = pygame.Rect(WIDTH + WIDTH, GAP_END, 40, LOWER_PIPE_HEIGHT)
-"""
-
 
 def waiting_board():
     #WINDOW.fill(WHITE)
@@ -68,14 +56,11 @@ def draw(UPPER_PIPE, LOWER_PIPE, SCORE, BIRD):
     
     pygame.draw.rect(WINDOW, GREEN, LOWER_PIPE)
     LOWER_PIPE.x -= 1
-    #pygame.draw.rect(WINDOW, GREEN, (500, 0, 40, 150))
-    #pygame.draw.rect(WINDOW, GREEN, (600, 0, 40, 400))
     
     SCORE_TEXT = SCORE_FONT.render("SCORE: " + str(SCORE), 1, BLACK)
     WINDOW.blit(SCORE_TEXT, (20 , 20))
 
     WINDOW.blit(BIRD_IMAGE, BIRD)
-    #WINDOW.blit(BIRD, (150,250))
     
     pygame.display.update()
 
@@ -103,7 +88,6 @@ def game_end(SCORE):
     for event in pygame.event.get():
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
-                #wait = False
                 main()
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -118,7 +102,6 @@ while waiting:
             
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
-                #BIRD_y_CHANGE = 2
                 waiting = False
     waiting_board()
 
@@ -151,14 +134,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #run = False
-                    
-            """
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_UP:
-                    BIRD_y_CHANGE = 10
-            """
-                    
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                 #  if you press spacebar you will move up
@@ -175,39 +151,16 @@ def main():
                 while wait:
                     game_end(SCORE)
                     for event in pygame.event.get():
-                        #pygame.time.delay(2000)
                         if event.type == pygame.KEYUP:
                             if event.key == pygame.K_SPACE:
                                 pygame.time.delay(3000)
                                 wait = False
-                                #main()
                         if event.type == pygame.QUIT:
                             pygame.quit()
                              #wait = False
                 main()
                 
                 
-                
-                """
-                wait = True
-                while wait:
-                #main()
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_SPACE:
-                            wait = False
-                            #main()
-                            
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                """
-                        
-            #BIRD_y_CHANGE += 3
-            
-            """
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    BIRD_y_CHANGE -= 10
-            """
             
         BIRD.y += BIRD_y_CHANGE
         if BIRD.y <= 0:
